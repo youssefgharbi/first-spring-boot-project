@@ -1,12 +1,23 @@
 package com.youssef.springdemo.student;
 
-import java.time.LocalDate;
+import jakarta.persistence.*;
 
+import javax.annotation.processing.Generated;
+import java.time.LocalDate;
+@Entity
+@Table(name = "student")
 public class Student {
+
+
+    @Id
+    @GeneratedValue
+    private Integer id;
     private String firstname;
     private String lastname;
     private LocalDate localDate;
+    @Column(unique = true)
     private String email;
+    @Transient
     private int age;
 
     public String getFirstname() {
@@ -56,7 +67,15 @@ public class Student {
         this.email = email;
         this.age = age;
     }
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public Student() {
     }
+
 }
